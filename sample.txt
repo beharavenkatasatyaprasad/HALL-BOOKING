@@ -1,0 +1,14 @@
+customers = [
+    {id : 1, name : "cust1", address : "Address 1", isActive : true },
+    {id : 2, name : "cust2", address : "Address 2", isActive : false }
+]
+
+customer_bookings = [
+    {id : 1, custid : 1, roomid : 1, startDate : '2020-11-08 07:13:10.847', endDate : '2020-11-08 21:13:10.847'},
+    {id : 2, custid : 2, roomid : 1, startDate : '2020-11-07 06:13:10.847', endDate : '2020-11-08 21:13:10.847'}
+]
+
+rooms = [
+    {id: 1, name : 'Hall 1', location : 'loc 1', amenities : ['ac', 'parking', 'cateringservice', 'fulltimesupport'], oneHourPrice : 1000},
+    {id: 2, name : 'Hall 2', location : 'loc 2', amenities : ['parking', 'cateringservice', 'fulltimesupport'], oneHourPrice : 1200},
+]
