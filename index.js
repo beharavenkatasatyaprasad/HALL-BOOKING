@@ -3,7 +3,8 @@ const express = require('express');
 const app = express();
 
 app.use(express.json());
-app.listen(3000 || process.env.PORT, () => console.log('listen at http://localhost:3000/'));
+// app.listen(3000, () => console.log('listen at http://localhost:3000/'));
+app.listen(process.env.PORT, () => console.log('listening'));
 
 app.get("/", function (req, res) {
     res.send("Hello");
