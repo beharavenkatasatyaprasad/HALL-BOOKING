@@ -8,8 +8,8 @@ const port = process.env.PORT || 3000
 app.listen(port, () => console.log('listening on port' , `${port}`));
 
 app.get("/", function (req, res) {
-    res.writeHead(200,{'content-Type':'text-html'})
-    res.write(`
+    res.status(200)
+    res.send(`
     <ul>
         <h1>Welcome</h1>
         <li><h1>For Creating room use <span style="color:red">/CreateRoom</span></h1></li>
