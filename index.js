@@ -19,8 +19,6 @@ app.get("/", function (req, res) {
         <li><h1>to List All Customers use <span style="color:red">/ListAllCustomers</span></h1></li>
     </ul>
     `);
-
-    res.end()
 });
   
 let customers = []
