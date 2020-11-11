@@ -3,11 +3,24 @@ const express = require('express');
 const app = express();
 
 app.use(express.json());
-// app.listen(3000, () => console.log('listen at http://localhost:3000/'));
-app.listen(process.env.PORT, () => console.log('listening'));
+const port = process.env.PORT || 3000
+
+app.listen(port, () => console.log('listening on port' , `${port}`));
 
 app.get("/", function (req, res) {
-    res.send("Hello");
+    res.writeHead(200,{'content-Type':'text-html'})
+    res.write(`
+    <ul>
+        <h1>Welcome</h1>
+        <li><h1>For Creating room use <span style="color:red">/CreateRoom</span></h1></li>
+        <li><h1>For Adding New Customer <span style="color:red">/addNewCustomer</span></h1></li>
+        <li><h1>For Booking room use <span style="color:red">/BookRoom</span></h1></li>
+        <li><h1>to List All rooms use <span style="color:red">/ListAllRooms</span></h1></li>
+        <li><h1>to List All Customers use <span style="color:red">/ListAllCustomers</span></h1></li>
+    </ul>
+    `);
+
+    res.end()
 });
   
 let customers = []
@@ -28,18 +41,13 @@ app.post('/CreateRoom', (req, res) =>{
     const {error} = schema.validate(req.body);
     if(error) return res.send(error.details[0].message);
 
-    // Check if hall already Exists 
-    
-    let isPresent = rooms.find((room) => room.name == req.body.name);
-    if(isPresent) return res.status(422).json({message : "Hall with the same name already Exists"});
-
     // Add the new entry in rooms
 
     const newRoom = {
         id : rooms.length +1,
         name : req.body.name,
         amenities : req.body.amenities,
-        location : req.body.location,
+        NoOfSeatsAvail : Joi.number().required(),
         oneHourPrice : req.body.oneHourPrice
     };
 
